@@ -35,7 +35,7 @@
 
     <!-- 4paradigm -->
     <openmldb.batch.version>0.6.2</openmldb.batch.version>
-    <default.openmldb.native.version>0.6.2</default.openmldb.native.version>
+    <openmldb.native.version>0.6.2-allinone</openmldb.native.version>
   </properties>
   
   <dependencies>
@@ -673,30 +673,6 @@
         </plugins>
       </build>
     </profile>
-
-    <!-- 4paradigm -->
-    <profile>
-      <id>linux</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <openmldb.native.version>${default.openmldb.native.version}</openmldb.native.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>macos</id>
-      <properties>
-        <openmldb.native.version>${default.openmldb.native.version}-macos</openmldb.native.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>allinone</id>
-      <properties>
-        <openmldb.native.version>${default.openmldb.native.version}-allinone</openmldb.native.version>
-      </properties>
-    </profile>
-
   </profiles>
 
   <repositories>
