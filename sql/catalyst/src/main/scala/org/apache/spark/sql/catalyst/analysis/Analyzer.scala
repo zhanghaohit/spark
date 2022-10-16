@@ -3444,6 +3444,9 @@ class Analyzer(override val catalogManager: CatalogManager)
     val (projectList, hiddenList) = joinType match {
       case LeftOuter =>
         (leftKeys ++ lUniqueOutput ++ rUniqueOutput.map(_.withNullability(true)), rightKeys)
+        // Add by 4Paradigm
+      case LastJoinType =>
+        (leftKeys ++ lUniqueOutput ++ rUniqueOutput.map(_.withNullability(true)), rightKeys)
       case LeftExistence(_) =>
         (leftKeys ++ lUniqueOutput, Seq.empty)
       case RightOuter =>

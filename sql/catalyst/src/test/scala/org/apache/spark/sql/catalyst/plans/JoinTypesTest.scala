@@ -61,4 +61,8 @@ class JoinTypesTest extends SparkFunSuite {
     assert(JoinType("cross") === Cross)
   }
 
+  // Add by 4Paradigm
+  test("construct a LastJoin type") {
+    assert(JoinType("last") === LastJoinType)
+  }
 }

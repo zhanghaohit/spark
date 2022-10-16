@@ -53,6 +53,9 @@ import org.apache.spark.sql.types.{DataType, StructType}
 import org.apache.spark.sql.util.ExecutionListenerManager
 import org.apache.spark.util.{CallSite, Utils}
 
+import com._4paradigm.openmldb.batch.api.OpenmldbSession
+import com._4paradigm.hybridse.sdk.UnsupportedHybridSeException
+
 /**
  * The entry point to programming Spark with the Dataset and DataFrame API.
  *
@@ -168,6 +171,12 @@ class SparkSession private(
    */
   @transient
   val sqlContext: SQLContext = new SQLContext(this)
+
+  /**
+   * Add by 4paradigm to support native execution engine.
+   */
+  @transient
+  val openmldbSession: OpenmldbSession = new OpenmldbSession(this)
 
   /**
    * Runtime configuration interface for Spark.
@@ -605,12 +614,32 @@ class SparkSession private(
    * ----------------- */
 
   /**
+   * Modify by 4paradigm to support OpenMLDB and fallback to SparkSQL
+   */
+  def sql(sqlText: String): DataFrame = withActive {
+    try {
+      openmldbSession.openmldbSql(sqlText).getSparkDf()
+    } catch {
+      case e: UnsupportedHybridSeException => {
+        val disableFallback = scala.util.Properties.envOrElse("DISABLE_OPENMLDB_FALLBACK", "false")
+        if (disableFallback.toLowerCase().equals("true")) {
+          logWarning(s"Unsupported SQL for OpenMLDB and disable fallback, message: " + e.getMessage)
+          throw new RuntimeException(e.getMessage);
+        } else {
+          logWarning(s"Unsupported SQL for OpenMLDB and fallback to SparkSQL, message: " + e.getMessage)
+          sparksql(sqlText)
+        }
+      }
+    }
+  }
+
+  /**
    * Executes a SQL query using Spark, returning the result as a `DataFrame`.
    * This API eagerly runs DDL/DML commands, but not for SELECT queries.
    *
    * @since 2.0.0
    */
-  def sql(sqlText: String): DataFrame = withActive {
+  def sparksql(sqlText: String): DataFrame = withActive {
     val tracker = new QueryPlanningTracker
     val plan = tracker.measurePhase(QueryPlanningTracker.PARSING) {
       sessionState.sqlParser.parsePlan(sqlText)

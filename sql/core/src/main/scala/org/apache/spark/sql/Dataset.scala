@@ -3273,6 +3273,9 @@ class Dataset[T] private[sql](
   @deprecated("Use createOrReplaceTempView(viewName) instead.", "2.0.0")
   def registerTempTable(tableName: String): Unit = {
     createOrReplaceTempView(tableName)
+
+    // Add by 4paradigm
+    sparkSession.openmldbSession.registerTable(tableName, this.asInstanceOf[DataFrame])
   }
 
   /**

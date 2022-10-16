@@ -320,7 +320,8 @@ trait JoinSelectionHelper {
 
   def canBuildBroadcastRight(joinType: JoinType): Boolean = {
     joinType match {
-      case _: InnerLike | LeftOuter | LeftSemi | LeftAnti | _: ExistenceJoin => true
+      // Add by 4Paradigm
+      case _: InnerLike | LeftOuter | LeftSemi | LeftAnti | _: ExistenceJoin | LastJoinType => true
       case _ => false
     }
   }
@@ -334,8 +335,9 @@ trait JoinSelectionHelper {
 
   def canBuildShuffledHashJoinRight(joinType: JoinType): Boolean = {
     joinType match {
+      // Add by 4Paradigm
       case _: InnerLike | LeftOuter | FullOuter |
-           LeftSemi | LeftAnti | _: ExistenceJoin => true
+           LeftSemi | LeftAnti | _: ExistenceJoin | LastJoinType => true
       case _ => false
     }
   }
