@@ -35,7 +35,7 @@
 
     <!-- 4paradigm -->
     <openmldb.batch.version>0.6.3</openmldb.batch.version>
-    <openmldb.native.version>0.6.3-allinone</openmldb.native.version>
+    <openmldb.native.version>0.6.3</openmldb.native.version>
   </properties>
   
   <dependencies>
