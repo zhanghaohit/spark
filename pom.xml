@@ -2644,7 +2644,7 @@
             <jvmArgs>
               <!-- Change from 4paradigm -->
               <!-- <jvmArg>-Xss128m</jvmArg> -->
-              <jvmArg>-Xss256m</jvmArg>
+              <jvmArg>-Xss512m</jvmArg>
               <jvmArg>-Xms4g</jvmArg>
               <jvmArg>-Xmx4g</jvmArg>
               <jvmArg>-XX:MaxMetaspaceSize=2g</jvmArg>
