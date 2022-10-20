@@ -35,7 +35,7 @@
 
     <!-- 4paradigm -->
     <openmldb.batch.version>0.6.3</openmldb.batch.version>
-    <openmldb.native.version>0.6.3</openmldb.native.version>
+    <openmldb.native.version>0.6.3-allinone</openmldb.native.version>
   </properties>
   
   <dependencies>
@@ -527,7 +527,6 @@
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.4paradigm.openmldb</groupId>
@@ -539,7 +538,6 @@
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
-      <scope>provided</scope>
     </dependency>
 
   </dependencies>
