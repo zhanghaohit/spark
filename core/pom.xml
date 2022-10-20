@@ -527,6 +527,7 @@
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.4paradigm.openmldb</groupId>
@@ -538,6 +539,7 @@
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
+      <scope>provided</scope>
     </dependency>
 
   </dependencies>
