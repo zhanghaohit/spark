@@ -34,8 +34,8 @@
     <sbt.project.name>core</sbt.project.name>
 
     <!-- 4paradigm -->
-    <openmldb.batch.version>0.6.8</openmldb.batch.version>
-    <openmldb.native.version>0.6.8-allinone</openmldb.native.version>
+    <openmldb.batch.version>0.6.9</openmldb.batch.version>
+    <openmldb.native.version>0.6.9-allinone</openmldb.native.version>
   </properties>
   
   <dependencies>
