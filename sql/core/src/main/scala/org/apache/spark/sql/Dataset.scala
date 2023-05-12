@@ -3304,7 +3304,7 @@ class Dataset[T] private[sql](
    */
   def createOrReplaceTempView(viewName: String): Unit = withPlan {
     // Add by 4paradigm
-    sparkSession.openmldbSession.registerTableInOpenmldbSession(viewName, this.asInstanceOf[DataFrame])
+    sparkSession.openmldbSession.registerTableInOpenmldbSession("default_db", viewName, this.asInstanceOf[DataFrame])
 
     createTempViewCommand(viewName, replace = true, global = false)
   }
