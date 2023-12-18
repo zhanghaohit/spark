@@ -519,6 +519,17 @@
     <!-- 4paradigm -->
     <dependency>
       <groupId>com.4paradigm.openmldb</groupId>
+      <artifactId>openmldb-common</artifactId>
+      <version>${openmldb.batch.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.4paradigm.openmldb</groupId>
       <artifactId>openmldb-native</artifactId>
       <version>${openmldb.native.version}</version>
       <exclusions>
