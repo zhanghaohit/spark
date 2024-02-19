@@ -268,5 +268,30 @@
         </dependency>
       </dependencies>
     </profile>
+    <profile>
+      <id>iceberg</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.iceberg</groupId>
+          <artifactId>iceberg-spark-runtime-${project.version.short}_${scala.binary.version}</artifactId>
+          <version>${iceberg.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.iceberg</groupId>
+          <artifactId>iceberg-hive-runtime</artifactId>
+          <version>${iceberg.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.iceberg</groupId>
+          <artifactId>iceberg-aws-bundle</artifactId>
+          <version>${iceberg.version}</version>
+        </dependency>
+      </dependencies>
+      <properties>
+        <iceberg.version>1.4.3</iceberg.version>
+        <project.version.short>3.2</project.version.short>
+      </properties>
+    </profile>
   </profiles>
+
 </project>
